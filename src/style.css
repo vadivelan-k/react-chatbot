@@ -1,19 +1,21 @@
-h1, p {
-  font-family: Lato;
+h1,
+p,
+span {
+  font-family: 'Open Sans', sans-serif;
 }
 
 .chatSection {
   margin: auto;
   width: 80%;
   height: 80vh;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   border-radius: 20px;
 }
 
 /* On mouse-over, add a deeper shadow */
 .chatSection:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .heading {
@@ -36,7 +38,7 @@ h1, p {
 .messageInputField {
   margin-left: 10px;
   font-size: 18px;
-  outline:none;
+  outline: none;
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
@@ -76,7 +78,7 @@ h1, p {
   border-top-left-radius: 30px 30px;
   border-bottom-left-radius: 30px 30px;
   float: right;
-  background-color: #6C63FF;
+  background-color: #6c63ff;
   margin-right: 5px;
   color: white;
 }
@@ -86,8 +88,8 @@ h1, p {
 }
 
 .messagesSection {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .messagesContainer {
