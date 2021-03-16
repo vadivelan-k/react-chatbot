@@ -13,7 +13,13 @@ const Button = ({ message, index }) => {
   // };
   console.log(message.response);
 
-  return <div>{/* <button>{displayMessage(message)}</button> */}</div>;
+  const onClickHandler = () => {};
+
+  return (
+    <div>
+      <button onClick={onClickHandler}></button>
+    </div>
+  );
 };
 
 export default Button;

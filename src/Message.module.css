@@ -51,12 +51,12 @@
   font-weight: 700;
 }
 
-/* @media only screen and (min-width: 992px) {
+@media only screen and (min-width: 992px) {
   .UserCard {
-    width: 50%;
+    width: 60%;
   }
 
   .BotCard {
-    width: 50%;
+    width: 60%;
   }
-} */
+}

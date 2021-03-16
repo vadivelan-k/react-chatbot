@@ -2,7 +2,6 @@ import React from 'react';
 
 import classes from './Messages.module.css';
 import Message from './Message';
-import Button from './Button';
 
 const Messages = ({ messages }) => {
   console.log('Messages: ' + messages);
@@ -12,7 +11,6 @@ const Messages = ({ messages }) => {
         return (
           <div className={classes.MessagesContainer}>
             <Message message={message} index={index} />
-            {/* <Button message={message} index={index} /> */}
           </div>
         );
       })}
