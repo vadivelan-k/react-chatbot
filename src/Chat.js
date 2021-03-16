@@ -57,89 +57,89 @@ const Chat = (props) => {
   return (
     <div className={classes.ChatSection}>
       <div className={classes.TopBar}>
-        <div className={classes.TopBarContainer}>
-          <svg
-            className={classes.TopBarBotIcon}
-            width='40'
-            height='40'
-            viewBox='0 0 36 36'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <g clip-path='url(#clip0)'>
-              <g filter='url(#filter0_d)'>
-                <circle cx='18' cy='18' r='14' fill='white' />
-              </g>
-              <path
-                d='M24.4 11H11.6C10.72 11 10 11.72 10 12.6V23.1373C10 24.5627 11.7234 25.2766 12.7314 24.2686C13.0314 23.9686 13.4384 23.8 13.8627 23.8H24.4C25.28 23.8 26 23.08 26 22.2V12.6C26 11.72 25.28 11 24.4 11Z'
-                fill='#006EAB'
-              />
-              <path
-                d='M14.5 17C15.3284 17 16 16.3284 16 15.5C16 14.6716 15.3284 14 14.5 14C13.6716 14 13 14.6716 13 15.5C13 16.3284 13.6716 17 14.5 17Z'
-                fill='white'
-              />
-              <path
-                d='M21.5 17C22.3284 17 23 16.3284 23 15.5C23 14.6716 22.3284 14 21.5 14C20.6716 14 20 14.6716 20 15.5C20 16.3284 20.6716 17 21.5 17Z'
-                fill='white'
-              />
+        {/* <div className={classes.TopBarContainer}> */}
+        <svg
+          className={classes.TopBarBotIcon}
+          width='40'
+          height='40'
+          viewBox='0 0 36 36'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <g clip-path='url(#clip0)'>
+            <g filter='url(#filter0_d)'>
+              <circle cx='18' cy='18' r='14' fill='white' />
             </g>
-            <defs>
-              <filter
-                id='filter0_d'
-                x='0'
-                y='2'
-                width='36'
-                height='36'
-                filterUnits='userSpaceOnUse'
-                color-interpolation-filters='sRGB'
-              >
-                <feFlood flood-opacity='0' result='BackgroundImageFix' />
-                <feColorMatrix
-                  in='SourceAlpha'
-                  type='matrix'
-                  values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'
-                />
-                <feOffset dy='2' />
-                <feGaussianBlur stdDeviation='2' />
-                <feColorMatrix
-                  type='matrix'
-                  values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0'
-                />
-                <feBlend
-                  mode='normal'
-                  in2='BackgroundImageFix'
-                  result='effect1_dropShadow'
-                />
-                <feBlend
-                  mode='normal'
-                  in='SourceGraphic'
-                  in2='effect1_dropShadow'
-                  result='shape'
-                />
-              </filter>
-              <clipPath id='clip0'>
-                <rect width='36' height='36' fill='white' />
-              </clipPath>
-            </defs>
-          </svg>
-          <text className={classes.TopBarText}>MOMBot</text>
-          <svg
-            className={classes.TopBarChevronIcon}
-            width='32'
-            height='32'
-            viewBox='0 0 32 32'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-          >
             <path
-              d='M7 11.5L16 20.5L25 11.5'
-              stroke='white'
-              stroke-width='1.5'
-              stroke-linecap='round'
-              stroke-linejoin='round'
+              d='M24.4 11H11.6C10.72 11 10 11.72 10 12.6V23.1373C10 24.5627 11.7234 25.2766 12.7314 24.2686C13.0314 23.9686 13.4384 23.8 13.8627 23.8H24.4C25.28 23.8 26 23.08 26 22.2V12.6C26 11.72 25.28 11 24.4 11Z'
+              fill='#006EAB'
             />
-          </svg>
-        </div>
+            <path
+              d='M14.5 17C15.3284 17 16 16.3284 16 15.5C16 14.6716 15.3284 14 14.5 14C13.6716 14 13 14.6716 13 15.5C13 16.3284 13.6716 17 14.5 17Z'
+              fill='white'
+            />
+            <path
+              d='M21.5 17C22.3284 17 23 16.3284 23 15.5C23 14.6716 22.3284 14 21.5 14C20.6716 14 20 14.6716 20 15.5C20 16.3284 20.6716 17 21.5 17Z'
+              fill='white'
+            />
+          </g>
+          <defs>
+            <filter
+              id='filter0_d'
+              x='0'
+              y='2'
+              width='36'
+              height='36'
+              filterUnits='userSpaceOnUse'
+              color-interpolation-filters='sRGB'
+            >
+              <feFlood flood-opacity='0' result='BackgroundImageFix' />
+              <feColorMatrix
+                in='SourceAlpha'
+                type='matrix'
+                values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'
+              />
+              <feOffset dy='2' />
+              <feGaussianBlur stdDeviation='2' />
+              <feColorMatrix
+                type='matrix'
+                values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0'
+              />
+              <feBlend
+                mode='normal'
+                in2='BackgroundImageFix'
+                result='effect1_dropShadow'
+              />
+              <feBlend
+                mode='normal'
+                in='SourceGraphic'
+                in2='effect1_dropShadow'
+                result='shape'
+              />
+            </filter>
+            <clipPath id='clip0'>
+              <rect width='36' height='36' fill='white' />
+            </clipPath>
+          </defs>
+        </svg>
+        {/* <text className={classes.TopBarText}>MOMBot</text> */}
+        <svg
+          className={classes.TopBarChevronIcon}
+          width='32'
+          height='32'
+          viewBox='0 0 32 32'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <path
+            d='M7 11.5L16 20.5L25 11.5'
+            stroke='white'
+            stroke-width='1.5'
+            stroke-linecap='round'
+            stroke-linejoin='round'
+          />
+        </svg>
+        {/* </div> */}
       </div>
       <div className={classes.BotContainer}>
         <div className={classes.MessagesContainer}>

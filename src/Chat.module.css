@@ -16,25 +16,29 @@
 .TopBar {
   background-image: url('./assets/images/Header-Background.png');
   height: 47px;
-}
-
-.TopBarContainer {
   align-items: baseline;
 }
 
+.TopBarContainer {
+  height: 47px;
+}
+
 .TopBarBotIcon {
-  margin: 5px;
+  margin-bottom: 7px;
+  margin-left: 5px;
 }
 
 .TopBarText {
   color: #ffffff;
   font-size: 16px;
   font-weight: bold;
+  padding-bottom: 15px;
 }
 
 .TopBarChevronIcon {
-  float: right;
-  padding: 10px;
+  /* float: right; */
+  padding-left: 910px;
+  margin: 10px;
 }
 
 .BotContainer {

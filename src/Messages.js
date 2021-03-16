@@ -12,7 +12,7 @@ const Messages = ({ messages }) => {
         return (
           <div className={classes.MessagesContainer}>
             <Message message={message} index={index} />
-            <Button value={message} index={index} />
+            {/* <Button message={message} index={index} /> */}
           </div>
         );
       })}
