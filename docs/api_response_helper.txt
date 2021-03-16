@@ -1,0 +1,212 @@
+// {
+//   "platform": "PLATFORM_UNSPECIFIED",
+//   "text": {
+//   "text": [
+//     "Do you wish to share your feedback through a quick survey?"
+//   ]
+// },
+//   "message": "text"
+// }
+
+// Sample payload for date picker
+
+// {
+//   "platform": "PLATFORM_UNSPECIFIED",
+//   "payload": {
+//   "fields": {
+//     "element": {
+//       "stringValue": "start_end_dt_picker",
+//         "kind": "stringValue"
+//     }
+//   }
+// },
+//   "message": "payload"
+// }
+
+// {
+//   "platform": "PLATFORM_UNSPECIFIED",
+//   "payload": {
+//   "fields": {
+//     "buttons": {
+//       "listValue": {
+//         "values": [
+//           {
+//             "stringValue": "Ask a Question",
+//             "kind": "stringValue"
+//           },
+//           {
+//             "stringValue": "Make a Claim",
+//             "kind": "stringValue"
+//           }
+//         ]
+//       },
+//       "kind": "listValue"
+//     }
+//   }
+// },
+//   "message": "payload"
+// }
+
+// {
+//   "platform": "PLATFORM_UNSPECIFIED",
+//   "payload": {
+//   "fields": {
+//     "element": {
+//       "stringValue": "login",
+//         "kind": "stringValue"
+//     }
+//   }
+// },
+//   "message": "payload"
+// }
+
+// {
+//   "platform": "PLATFORM_UNSPECIFIED",
+//   "payload": {
+//   "fields": {
+//     "buttons": {
+//       "listValue": {
+//         "values": [
+//           {
+//             "stringValue": "Edit",
+//             "kind": "stringValue"
+//           },
+//           {
+//             "stringValue": "Confirm",
+//             "kind": "stringValue"
+//           }
+//         ]
+//       },
+//       "kind": "listValue"
+//     },
+//     "element": {
+//       "stringValue": "emp_details",
+//         "kind": "stringValue"
+//     }
+//   }
+// },
+//   "message": "payload"
+// }
+
+// {
+//   "platform": "PLATFORM_UNSPECIFIED",
+//   "payload": {
+//   "fields": {
+//     "buttons": {
+//       "listValue": {
+//         "values": [
+//           {
+//             "stringValue": "Edit",
+//             "kind": "stringValue"
+//           },
+//           {
+//             "stringValue": "Confirm",
+//             "kind": "stringValue"
+//           }
+//         ]
+//       },
+//       "kind": "listValue"
+//     },
+//     "element": {
+//       "stringValue": "case_details",
+//         "kind": "stringValue"
+//     }
+//   }
+// },
+//   "message": "payload"
+// }
+
+// {
+//   "platform": "PLATFORM_UNSPECIFIED",
+//   "payload": {
+//   "fields": {
+//     "element": {
+//       "stringValue": "doc_upload",
+//         "kind": "stringValue"
+//     },
+//     "buttons": {
+//       "listValue": {
+//         "values": [
+//           {
+//             "stringValue": "Edit",
+//             "kind": "stringValue"
+//           },
+//           {
+//             "stringValue": "Confirm",
+//             "kind": "stringValue"
+//           }
+//         ]
+//       },
+//       "kind": "listValue"
+//     }
+//   }
+// },
+//   "message": "payload"
+// }
+
+// {
+//   "platform": "PLATFORM_UNSPECIFIED",
+//   "payload": {
+//   "fields": {
+//     "buttons": {
+//       "listValue": {
+//         "values": [
+//           {
+//             "stringValue": "Edit",
+//             "kind": "stringValue"
+//           },
+//           {
+//             "stringValue": "Submit",
+//             "kind": "stringValue"
+//           }
+//         ]
+//       },
+//       "kind": "listValue"
+//     },
+//     "form": {
+//       "structValue": {
+//         "fields": {
+//           "claimable": {
+//             "stringValue": "",
+//               "kind": "stringValue"
+//           },
+//           "awdays": {
+//             "stringValue": "",
+//               "kind": "stringValue"
+//           },
+//           "cpstart": {
+//             "stringValue": "",
+//               "kind": "stringValue"
+//           },
+//           "cpend": {
+//             "stringValue": "",
+//               "kind": "stringValue"
+//           },
+//           "bsal": {
+//             "stringValue": "",
+//               "kind": "stringValue"
+//           },
+//           "wdays": {
+//             "stringValue": "",
+//               "kind": "stringValue"
+//           },
+//           "incompay": {
+//             "stringValue": "",
+//               "kind": "stringValue"
+//           },
+//           "rpay": {
+//             "stringValue": "",
+//               "kind": "stringValue"
+//           }
+//         }
+//       },
+//       "kind": "structValue"
+//     },
+//     "element": {
+//       "stringValue": "review_claim",
+//         "kind": "stringValue"
+//     }
+//   }
+// },
+//   "message": "payload"
+// }
