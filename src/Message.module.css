@@ -1,0 +1,62 @@
+.MessageCard {
+}
+
+.BotContainer {
+  padding-top: 10px;
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.BotIcon {
+  margin-top: 5px;
+  padding-left: 15px;
+  padding-right: 5px;
+}
+
+.BotCard {
+  width: 75%;
+  border-bottom-right-radius: 30px 30px;
+  border-top-right-radius: 30px 30px;
+  border-bottom-left-radius: 30px 30px;
+  background-color: #ffffff;
+  margin-left: 5px;
+  color: #333333;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.BotMessage {
+  padding: 10px;
+  font-family: 'Montserrat';
+  font-weight: 700;
+}
+
+.UserCard {
+  width: 50%;
+  border-bottom-right-radius: 30px 30px;
+  border-top-left-radius: 30px 30px;
+  border-bottom-left-radius: 30px 30px;
+  float: right;
+  background-color: #005787;
+  margin-right: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: #ffffff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.UserMessage {
+  padding: 10px;
+  font-family: 'Montserrat';
+  font-weight: 700;
+}
+
+@media only screen and (min-width: 992px) {
+  .UserCard {
+    width: 60%;
+  }
+
+  .BotCard {
+    width: 60%;
+  }
+}
