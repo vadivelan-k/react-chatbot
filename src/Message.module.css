@@ -26,9 +26,14 @@
 }
 
 .BotMessage {
-  padding: 10px;
+  margin: 20px;
   font-family: 'Montserrat';
   font-weight: 700;
+}
+
+.Calendar {
+  text-align: center;
+  padding-bottom: 10px;
 }
 
 .UserCard {
@@ -46,7 +51,7 @@
 }
 
 .UserMessage {
-  padding: 10px;
+  margin: 20px;
   font-family: 'Montserrat';
   font-weight: 700;
 }

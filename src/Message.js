@@ -1,30 +1,69 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classes from './Message.module.css';
-import ActionButton from "./ActionButton";
+import ActionButton from './ActionButton';
+
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
 
 const Message = ({ message, index, handleSendRequest }) => {
+  const [open, setOpen] = useState(false);
+
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(null);
+
+  const onChange = (dates) => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
+    console.log('Date: ', startDate, endDate);
+  };
+
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
+
   const displayMessage = ({ response }) => {
     const textMessages = response.filter(
       (messageInfo) => messageInfo.message === 'text'
     );
-    return textMessages.map(textMessage =>
-      <p className={classes.BotMessage}>
-        { textMessage.text.text[0] }
-      </p>
-    );
+    return textMessages.map((textMessage) => (
+      <p className={classes.BotMessage}>{textMessage.text.text[0]}</p>
+    ));
   };
 
   const displayActionItems = ({ response }) => {
-    const [payloadMessage] = response.filter((messageInfo) => messageInfo.message === 'payload');
+    const [payloadMessage] = response.filter(
+      (messageInfo) => messageInfo.message === 'payload'
+    );
     if (payloadMessage) {
       if (payloadMessage.payload.fields.element) {
         const element = payloadMessage.payload.fields.element;
         let actionItem = '';
 
         if (element.stringValue === 'start_end_dt_picker') {
-          actionItem = 'Start and End Date picker';
+          actionItem = (
+            <div className={classes.Calendar}>
+              <DatePicker
+                className='calendar'
+                selected={startDate}
+                onChange={onChange}
+                startDate={startDate}
+                endDate={endDate}
+                selectsRange
+                inline
+              />
+              <ActionButton
+                actionText={'2 May 2020 to 19 May 2020'}
+                handleSendRequest={handleSendRequest}
+              />
+            </div>
+          );
         } else if (element.stringValue === 'login') {
-          actionItem = 'Login';
+          actionItem = (
+            <button onClick={onOpenModal}>Login via SingPass</button>
+          );
         } else if (element.stringValue === 'emp_details') {
           actionItem = 'Emp details';
         } else if (element.stringValue === 'case_details') {
@@ -37,33 +76,40 @@ const Message = ({ message, index, handleSendRequest }) => {
       if (payloadMessage.payload.fields.buttons) {
         return (
           <p className={classes.BotMessage}>
-            {
-              payloadMessage.payload.fields.buttons.listValue.values.map((buttonInfo) => {
+            {payloadMessage.payload.fields.buttons.listValue.values.map(
+              (buttonInfo) => {
                 return (
                   <ActionButton
                     actionText={buttonInfo.stringValue}
                     handleSendRequest={handleSendRequest}
                   />
                 );
-              })
-            }
+              }
+            )}
           </p>
         );
       }
     } else {
       return null;
     }
-
   };
 
   return (
     <div className={classes.MessageCard} key={`key-${index}`}>
+      <Modal open={open} onClose={onCloseModal} center>
+        <p>You have successfully login with SingPass.</p>
+        <p>jklsdahflkjhsjkfhljkshadljk</p>
+        <ActionButton
+          actionText={'Confirm'}
+          handleSendRequest={handleSendRequest}
+        />
+      </Modal>
       {message.isBot ? (
         <div className={classes.BotContainer}>
           <svg
             className={classes.BotIcon}
-            width='45'
-            height='45'
+            width='60'
+            height='60'
             viewBox='0 0 32 32'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'
@@ -81,15 +127,9 @@ const Message = ({ message, index, handleSendRequest }) => {
               fill='white'
             />
           </svg>
-
           <div className={classes.BotCard}>
-            {
-              displayMessage(message)
-            }
-
-            {
-              displayActionItems(message)
-            }
+            {displayMessage(message)}
+            {displayActionItems(message)}
           </div>
         </div>
       ) : (
