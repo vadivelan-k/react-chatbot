@@ -31,6 +31,11 @@
   font-weight: 700;
 }
 
+.Calendar {
+  margin-left: 70px;
+  padding-bottom: 10px;
+}
+
 .UserCard {
   width: 50%;
   border-bottom-right-radius: 30px 30px;

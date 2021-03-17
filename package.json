@@ -7,6 +7,7 @@
     "dialogflow": "4.0.3",
     "events": "3.2.0",
     "react": "16.13.1",
+    "react-datepicker": "^3.6.0",
     "react-dom": "16.13.1",
     "react-responsive-modal": "^6.0.1",
     "uuid": "8.3.0"
