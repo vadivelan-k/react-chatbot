@@ -54,6 +54,16 @@ const Chat = (props) => {
     }
   };
 
+  const handleSendRequest = ({ actionText }) => {
+    const message = {
+      text: actionText,
+      isBot: false,
+    };
+    setResponses((responses) => [...responses, message]);
+    handleMessageSubmit(message.text);
+    setCurrentMessage('');
+  };
+
   return (
     <div className={classes.ChatSection}>
       <div className={classes.TopBar}>
@@ -147,7 +157,7 @@ const Chat = (props) => {
       </div>
       <div className={classes.BotContainer}>
         <div className={classes.MessagesContainer}>
-          <Messages messages={responses} />
+          <Messages messages={responses} handleSendRequest={handleSendRequest}/>
         </div>
       </div>
       <div className={classes.InputSection}>

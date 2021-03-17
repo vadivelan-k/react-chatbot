@@ -6,7 +6,7 @@ import Message from './Message';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 
-const Messages = ({ messages }) => {
+const Messages = ({ messages, handleSendRequest }) => {
   const [open, setOpen] = useState(false);
 
   const onOpenModal = () => setOpen(true);
@@ -21,7 +21,7 @@ const Messages = ({ messages }) => {
       {messages.map((message, index) => {
         return (
           <div className={classes.MessagesContainer}>
-            <Message message={message} index={index} />
+            <Message message={message} index={index} handleSendRequest={handleSendRequest} />
           </div>
         );
       })}

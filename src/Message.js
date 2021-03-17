@@ -1,12 +1,59 @@
 import React from 'react';
 import classes from './Message.module.css';
+import ActionButton from "./ActionButton";
 
-const Message = ({ message, index }) => {
+const Message = ({ message, index, handleSendRequest }) => {
   const displayMessage = ({ response }) => {
-    const [textMessage] = response.filter(
+    const textMessages = response.filter(
       (messageInfo) => messageInfo.message === 'text'
     );
-    return textMessage.text.text[0];
+    return textMessages.map(textMessage =>
+      <p className={classes.BotMessage}>
+        { textMessage.text.text[0] }
+      </p>
+    );
+  };
+
+  const displayActionItems = ({ response }) => {
+    const [payloadMessage] = response.filter((messageInfo) => messageInfo.message === 'payload');
+    if (payloadMessage) {
+      if (payloadMessage.payload.fields.element) {
+        const element = payloadMessage.payload.fields.element;
+        let actionItem = '';
+
+        if (element.stringValue === 'start_end_dt_picker') {
+          actionItem = 'Start and End Date picker';
+        } else if (element.stringValue === 'login') {
+          actionItem = 'Login';
+        } else if (element.stringValue === 'emp_details') {
+          actionItem = 'Emp details';
+        } else if (element.stringValue === 'case_details') {
+          actionItem = 'Case details';
+        }
+
+        return actionItem;
+      }
+
+      if (payloadMessage.payload.fields.buttons) {
+        return (
+          <p className={classes.BotMessage}>
+            {
+              payloadMessage.payload.fields.buttons.listValue.values.map((buttonInfo) => {
+                return (
+                  <ActionButton
+                    actionText={buttonInfo.stringValue}
+                    handleSendRequest={handleSendRequest}
+                  />
+                );
+              })
+            }
+          </p>
+        );
+      }
+    } else {
+      return null;
+    }
+
   };
 
   return (
@@ -36,7 +83,13 @@ const Message = ({ message, index }) => {
           </svg>
 
           <div className={classes.BotCard}>
-            <p className={classes.BotMessage}>{displayMessage(message)}</p>
+            {
+              displayMessage(message)
+            }
+
+            {
+              displayActionItems(message)
+            }
           </div>
         </div>
       ) : (
