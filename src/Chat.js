@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import MOMBotIcon from './assets/images/MOMBot-Icon-1.svg';
@@ -54,15 +54,25 @@ const Chat = (props) => {
     }
   };
 
-  const handleSendRequest = ({ actionText }) => {
+  const handleSendRequest = ({ actionText, initiateChat = false }) => {
     const message = {
       text: actionText,
       isBot: false,
     };
-    setResponses((responses) => [...responses, message]);
+
+    let newResponseCollection = []
+    if (initiateChat) {
+      newResponseCollection = [...responses];
+    } else {
+      newResponseCollection = [...responses, message];
+    }
+
+    setResponses((responses) => newResponseCollection);
     handleMessageSubmit(message.text);
     setCurrentMessage('');
   };
+
+  useEffect(() => handleSendRequest({ actionText: 'Hi', initiateChat: true }), []);
 
   return (
     <div className={classes.ChatSection}>
