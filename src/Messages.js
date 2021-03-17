@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import classes from './Messages.module.css';
 import Message from './Message';
@@ -11,8 +11,12 @@ const Messages = ({ messages, handleSendRequest }) => {
 
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
+  const divRef = useRef(null);
 
-  console.log('Messages: ' + messages);
+  useEffect(() => {
+    divRef.current.scrollIntoView({ behavior: 'smooth' });
+  });
+
   return (
     <div className={classes.MessagesSection}>
       <Modal open={open} onClose={onCloseModal} center>
@@ -26,6 +30,8 @@ const Messages = ({ messages, handleSendRequest }) => {
         );
       })}
       {/* <button onClick={onOpenModal}>Login via SingPass</button> */}
+
+      <div ref={divRef}></div>
     </div>
   );
 };
