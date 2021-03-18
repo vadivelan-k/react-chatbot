@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import moment from 'moment';
-
+import Alert from 'react-bootstrap/Alert';
 import classes from './Messages.module.css';
 import Message from './Message';
 
@@ -17,7 +17,9 @@ const Messages = ({ messages, handleSendRequest }) => {
 
   return (
     <div className={classes.MessagesSection}>
-      <p className={classes.Timestamp}>{timestampFormat}</p>
+      <Alert variant="secondary">
+        Ask a question about MOM
+      </Alert>
 
       {messages.map((message, index) => {
         return (

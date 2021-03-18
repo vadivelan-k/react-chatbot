@@ -81,70 +81,27 @@ const Chat = (props) => {
     <div className={classes.ChatSection}>
       <div className={classes.TopBar}>
         <span>
-          <label>MOMBot</label>
-          <svg
-            className={classes.TopBarBotIcon}
-            width='40'
-            height='40'
-            viewBox='0 0 36 36'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <g clipPath='url(#clip0)'>
-              <g filter='url(#filter0_d)'>
-                <circle cx='18' cy='18' r='14' fill='white' />
+          <label>Chatbot POC</label>
+          <svg className="Message_BotIcon__1oSZb" width="60" height="60" viewBox="0 0 70 50" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" fillRule="evenodd">
+              <g>
+                <g>
+                  <path
+                    d="M24.235 9.754C10.983 26.936 8.617 51.46 21.172 66.104c-8.098-19.377-.646-39.968 8.873-52.848 1.384-1.75 1.216-3.807-.423-4.944-2.733-1.897-4.793.672-5.387 1.442zM38.093 26.08c-11.16 17.06-12.4 39.3.054 53.157 1.557 1.73 3.357 3.147 5.54 4.557.36.237 1.904.99 3.366 1.456 3.14 1 5.822.318 7.172-.768-2.396.358-5.398.518-8.96-2.33-13.417-10.73-12.49-35.84-1.08-52.852.125-.195 1.545-2.975-1.008-4.657-2.138-1.41-4.084-.092-5.084 1.437zM36.028 10.643C21.99 26.896 12.71 55.46 31.634 76.385 22.626 59.918 22.9 38.54 42.118 15.055c1.15-1.648 1.24-3.742-.67-5.24-1.91-1.503-4.094-.59-5.42.828z"
+                    id="Shape" fill="#007CB7" />
+                  <path
+                    d="M14.005 23.433s-1.295 3.64-1.455 4.368C.61 22.37.797 29.674 4.194 37.45c-4.318-3.75-9.95-20.178 9.81-14.015z"
+                    id="Shape" fill="#F7921E" />
+                  <path
+                    d="M42.128 4.733C42.128 2.12 44.248 0 46.86 0c2.614 0 4.733 2.12 4.733 4.733 0 2.613-2.12 4.73-4.733 4.73-2.613.002-4.732-2.117-4.732-4.73z"
+                    id="Shape" fill="#007CB7" />
+                  <path
+                    d="M44.278 34.76c32.896 21.43 18.78 51.715 5.686 47.35-2.73-.91-4.413-3.14-4.458-3.775 1.425 1.397 3.05 2.32 4.375 2.684 14.308 3.91 17.228-27.355-7.83-41.37.772-2.184 1.773-4.026 2.228-4.89z"
+                    fill="#F7921E" />
+                </g>
               </g>
-              <path
-                d='M24.4 11H11.6C10.72 11 10 11.72 10 12.6V23.1373C10 24.5627 11.7234 25.2766 12.7314 24.2686C13.0314 23.9686 13.4384 23.8 13.8627 23.8H24.4C25.28 23.8 26 23.08 26 22.2V12.6C26 11.72 25.28 11 24.4 11Z'
-                fill='#006EAB'
-              />
-              <path
-                d='M14.5 17C15.3284 17 16 16.3284 16 15.5C16 14.6716 15.3284 14 14.5 14C13.6716 14 13 14.6716 13 15.5C13 16.3284 13.6716 17 14.5 17Z'
-                fill='white'
-              />
-              <path
-                d='M21.5 17C22.3284 17 23 16.3284 23 15.5C23 14.6716 22.3284 14 21.5 14C20.6716 14 20 14.6716 20 15.5C20 16.3284 20.6716 17 21.5 17Z'
-                fill='white'
-              />
             </g>
-            <defs>
-              <filter
-                id='filter0_d'
-                x='0'
-                y='2'
-                width='36'
-                height='36'
-                filterUnits='userSpaceOnUse'
-                colorInterpolationFilters='sRGB'
-              >
-                <feFlood floodOpacity='0' result='BackgroundImageFix' />
-                <feColorMatrix
-                  in='SourceAlpha'
-                  type='matrix'
-                  values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'
-                />
-                <feOffset dy='2' />
-                <feGaussianBlur stdDeviation='2' />
-                <feColorMatrix
-                  type='matrix'
-                  values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0'
-                />
-                <feBlend
-                  mode='normal'
-                  in2='BackgroundImageFix'
-                  result='effect1_dropShadow'
-                />
-                <feBlend
-                  mode='normal'
-                  in='SourceGraphic'
-                  in2='effect1_dropShadow'
-                  result='shape'
-                />
-              </filter>
-              <clipPath id='clip0'>
-                <rect width='36' height='36' fill='white' />
-              </clipPath>
-            </defs>
           </svg>
         </span>
         <div className={classes.TopBarChevronIcon}>
@@ -179,7 +136,7 @@ const Chat = (props) => {
           value={currentMessage}
           onChange={handleMessageChange}
           onKeyDown={handleSubmit}
-          placeholder='Say something...'
+          placeholder='Type your question ...'
           className={classes.MessageInputField}
         />
         <div onClick={handleSubmit}>

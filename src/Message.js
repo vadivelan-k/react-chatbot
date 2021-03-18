@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import classes from './Message.module.css';
 import ActionButton from './ActionButton';
-import { Button } from 'react-bootstrap';
 
 import DatePicker from 'react-datepicker';
 import CalendarConfirmButton from './CalendarConfirmButton';
@@ -71,9 +70,6 @@ const Message = ({ message, index, handleSendRequest }) => {
           );
         } else if (element.stringValue === 'login') {
           actionItem = (
-            // <Button className={classes.LoginButton} onClick={onOpenModal}>
-            //   Login via SingPass
-            // </Button>
             <div>
               <p className={classes.BotMessage}>
                 You have successfully login with SingPass
@@ -510,26 +506,26 @@ const Message = ({ message, index, handleSendRequest }) => {
       </Modal>
       {message.isBot ? (
         <div className={classes.BotContainer}>
-          <svg
-            className={classes.BotIcon}
-            width='60'
-            height='60'
-            viewBox='0 0 32 32'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <path
-              d='M26.3225 4.12915H5.67732C4.25797 4.12915 3.09668 5.29044 3.09668 6.7098V25.1072C3.09668 26.889 5.25096 27.7813 6.51089 26.5214L7.67218 25.3601C8.04726 24.985 8.55596 24.7743 9.0864 24.7743H26.3225C27.7418 24.7743 28.9031 23.613 28.9031 22.1937V6.7098C28.9031 5.29044 27.7418 4.12915 26.3225 4.12915Z'
-              fill='#006EAB'
-            />
-            <path
-              d='M9.5 14C10.8807 14 12 12.8807 12 11.5C12 10.1193 10.8807 9 9.5 9C8.11929 9 7 10.1193 7 11.5C7 12.8807 8.11929 14 9.5 14Z'
-              fill='white'
-            />
-            <path
-              d='M22.5 14C23.8807 14 25 12.8807 25 11.5C25 10.1193 23.8807 9 22.5 9C21.1193 9 20 10.1193 20 11.5C20 12.8807 21.1193 14 22.5 14Z'
-              fill='white'
-            />
+          <svg className="Message_BotIcon__1oSZb" width="60" height="60" viewBox="0 0 70 50" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" fillRule="evenodd">
+              <g>
+                <g>
+                  <path
+                    d="M24.235 9.754C10.983 26.936 8.617 51.46 21.172 66.104c-8.098-19.377-.646-39.968 8.873-52.848 1.384-1.75 1.216-3.807-.423-4.944-2.733-1.897-4.793.672-5.387 1.442zM38.093 26.08c-11.16 17.06-12.4 39.3.054 53.157 1.557 1.73 3.357 3.147 5.54 4.557.36.237 1.904.99 3.366 1.456 3.14 1 5.822.318 7.172-.768-2.396.358-5.398.518-8.96-2.33-13.417-10.73-12.49-35.84-1.08-52.852.125-.195 1.545-2.975-1.008-4.657-2.138-1.41-4.084-.092-5.084 1.437zM36.028 10.643C21.99 26.896 12.71 55.46 31.634 76.385 22.626 59.918 22.9 38.54 42.118 15.055c1.15-1.648 1.24-3.742-.67-5.24-1.91-1.503-4.094-.59-5.42.828z"
+                    id="Shape" fill="#007CB7" />
+                  <path
+                    d="M14.005 23.433s-1.295 3.64-1.455 4.368C.61 22.37.797 29.674 4.194 37.45c-4.318-3.75-9.95-20.178 9.81-14.015z"
+                    id="Shape" fill="#F7921E" />
+                  <path
+                    d="M42.128 4.733C42.128 2.12 44.248 0 46.86 0c2.614 0 4.733 2.12 4.733 4.733 0 2.613-2.12 4.73-4.733 4.73-2.613.002-4.732-2.117-4.732-4.73z"
+                    id="Shape" fill="#007CB7" />
+                  <path
+                    d="M44.278 34.76c32.896 21.43 18.78 51.715 5.686 47.35-2.73-.91-4.413-3.14-4.458-3.775 1.425 1.397 3.05 2.32 4.375 2.684 14.308 3.91 17.228-27.355-7.83-41.37.772-2.184 1.773-4.026 2.228-4.89z"
+                    fill="#F7921E" />
+                </g>
+              </g>
+            </g>
           </svg>
           <div className={classes.BotCard}>
             {displayMessage(message)}

@@ -7,3 +7,13 @@ span {
 .btn {
   margin: 5px;
 }
+
+.mainSection {
+  margin-top: 5%;
+}
+
+.alert-secondary {
+  text-align: center;
+  position: sticky;
+  top: 0;
+}
