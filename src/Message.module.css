@@ -71,6 +71,17 @@ td {
   font-size: 13px;
 }
 
+h6 {
+  padding-left: 20px;
+}
+
+.SalaryCalculator {
+  padding-left: 20px;
+  font-size: 13px;
+  color: gray;
+  font-weight: lighter;
+}
+
 @media only screen and (min-width: 992px) {
   .UserCard {
     width: 60%;
