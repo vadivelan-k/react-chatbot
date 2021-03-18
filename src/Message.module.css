@@ -63,6 +63,14 @@
   font-weight: 700;
 }
 
+tr {
+  border-bottom-style: solid;
+}
+
+td {
+  font-size: 13px;
+}
+
 @media only screen and (min-width: 992px) {
   .UserCard {
     width: 60%;
