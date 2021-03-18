@@ -11,6 +11,13 @@
 .MessagesSection::-webkit-scrollbar {
   display: none;
 }
+
+.Timestamp {
+  text-align: center;
+  color: #333333;
+  font-size: 15px;
+}
+
 .MessagesContainer {
   display: flex;
   flex-direction: column;

@@ -1,0 +1,9 @@
+.confirmBtn,
+.confirmBtn:hover,
+.confirmBtn:active {
+  color: #005787;
+  background-color: white;
+
+  margin-left: 42%;
+  border-radius: 10px 10px 10px 10px;
+}
