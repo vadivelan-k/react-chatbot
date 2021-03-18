@@ -60,7 +60,7 @@ const Chat = (props) => {
       isBot: false,
     };
 
-    let newResponseCollection = []
+    let newResponseCollection = [];
     if (initiateChat) {
       newResponseCollection = [...responses];
     } else {
@@ -72,12 +72,14 @@ const Chat = (props) => {
     setCurrentMessage('');
   };
 
-  useEffect(() => handleSendRequest({ actionText: 'Hi', initiateChat: true }), []);
+  useEffect(
+    () => handleSendRequest({ actionText: 'Hi', initiateChat: true }),
+    []
+  );
 
   return (
     <div className={classes.ChatSection}>
       <div className={classes.TopBar}>
-        {/* <div className={classes.TopBarContainer}> */}
         <span>
           <label>MOMBot</label>
           <svg
@@ -88,7 +90,7 @@ const Chat = (props) => {
             fill='none'
             xmlns='http://www.w3.org/2000/svg'
           >
-            <g clip-path='url(#clip0)'>
+            <g clipPath='url(#clip0)'>
               <g filter='url(#filter0_d)'>
                 <circle cx='18' cy='18' r='14' fill='white' />
               </g>
@@ -113,9 +115,9 @@ const Chat = (props) => {
                 width='36'
                 height='36'
                 filterUnits='userSpaceOnUse'
-                color-interpolation-filters='sRGB'
+                colorInterpolationFilters='sRGB'
               >
-                <feFlood flood-opacity='0' result='BackgroundImageFix' />
+                <feFlood floodOpacity='0' result='BackgroundImageFix' />
                 <feColorMatrix
                   in='SourceAlpha'
                   type='matrix'
@@ -145,29 +147,30 @@ const Chat = (props) => {
             </defs>
           </svg>
         </span>
-
-        {/* <text className={classes.TopBarText}>MOMBot</text> */}
-        <svg
-          className={classes.TopBarChevronIcon}
-          width='32'
-          height='32'
-          viewBox='0 0 32 32'
-          fill='none'
-          xmlns='http://www.w3.org/2000/svg'
-        >
-          <path
-            d='M7 11.5L16 20.5L25 11.5'
-            stroke='white'
-            stroke-width='1.5'
-            stroke-linecap='round'
-            stroke-linejoin='round'
-          />
-        </svg>
-        {/* </div> */}
+        <div className={classes.TopBarChevronIcon}>
+          <svg
+            width='32'
+            height='32'
+            viewBox='0 0 32 32'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path
+              d='M7 11.5L16 20.5L25 11.5'
+              stroke='white'
+              strokeWidth='1.5'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+            />
+          </svg>
+        </div>
       </div>
       <div className={classes.BotContainer}>
         <div className={classes.MessagesContainer}>
-          <Messages messages={responses} handleSendRequest={handleSendRequest}/>
+          <Messages
+            messages={responses}
+            handleSendRequest={handleSendRequest}
+          />
         </div>
       </div>
       <div className={classes.InputSection}>

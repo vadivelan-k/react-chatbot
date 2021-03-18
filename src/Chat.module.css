@@ -55,6 +55,7 @@ label {
   padding-top: 10px;
   padding-right: 10px;
   float: right;
+  cursor: pointer;
 }
 
 .BotContainer {
@@ -91,6 +92,7 @@ label {
   margin-right: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 992px) {
