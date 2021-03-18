@@ -21,7 +21,7 @@ const Messages = ({ messages, handleSendRequest }) => {
 
       {messages.map((message, index) => {
         return (
-          <div className={classes.MessagesContainer}>
+          <div className={classes.MessagesContainer} key={index}>
             <Message
               message={message}
               index={index}
