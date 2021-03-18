@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import classes from './Message.module.css';
 import ActionButton from './ActionButton';
+import { Button } from 'react-bootstrap';
 
 import DatePicker from 'react-datepicker';
+import CalendarConfirmButton from './CalendarConfirmButton';
 import 'react-datepicker/dist/react-datepicker.css';
+import moment from 'moment';
 
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
@@ -20,6 +23,10 @@ const Message = ({ message, index, handleSendRequest }) => {
     setEndDate(end);
     console.log('Date: ', startDate, endDate);
   };
+
+  var startDateFormat = moment(startDate).format('MMM Do YYYY');
+  var endDateFormat = moment(endDate).format('MMM Do YYYY');
+  const confirmDate = startDateFormat + ' to ' + endDateFormat;
 
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
@@ -54,18 +61,123 @@ const Message = ({ message, index, handleSendRequest }) => {
                 selectsRange
                 inline
               />
-              <ActionButton
-                actionText={'2 May 2020 to 19 May 2020'}
+              <CalendarConfirmButton
+                actionText={confirmDate}
                 handleSendRequest={handleSendRequest}
               />
             </div>
           );
         } else if (element.stringValue === 'login') {
           actionItem = (
-            <button onClick={onOpenModal}>Login via SingPass</button>
+            // <Button className={classes.LoginButton} onClick={onOpenModal}>
+            //   Login via SingPass
+            // </Button>
+            <div>
+              <p className={classes.BotMessage}>
+                You have successfully login with SingPass
+              </p>
+              <p className={classes.BotMessage}>
+                Please confirm your personal details
+              </p>
+              <table className={classes.BotMessage}>
+                <tr>
+                  <td>Name (as per NRIC/FIN): </td>
+                  <td>TAN YUE LIANG ALEXANDER</td>
+                </tr>
+                <tr>
+                  <td>NRIC or FIN: </td>
+                  <td>S0000121F</td>
+                </tr>
+                <tr>
+                  <td>Nationality: </td>
+                  <td>Singaporean</td>
+                </tr>
+                <tr>
+                  <td>Date of Birth: </td>
+                  <td>12/12/1977</td>
+                </tr>
+                <tr>
+                  <td>Country of Birth: </td>
+                  <td>Singapore</td>
+                </tr>
+                <tr>
+                  <td>Pass Status: </td>
+                  <td>Active</td>
+                </tr>
+                <tr>
+                  <td>Pass Expiry: </td>
+                  <td>10/10/2025</td>
+                </tr>
+                <tr>
+                  <td>Mailing Address: </td>
+                  <td>Tampines St 92, BLK 844 #10-123 S243929</td>
+                </tr>
+                <tr>
+                  <td>Billing Address: </td>
+                  <td>Tampines St 92, BLK 844 #10-123 S243929</td>
+                </tr>
+                <tr>
+                  <td>Mobile Number: </td>
+                  <td>9642 2314</td>
+                </tr>
+                <tr>
+                  <td>Home Number: </td>
+                  <td>6782 1312</td>
+                </tr>
+                <tr>
+                  <td>Email Address: </td>
+                  <td>alexandertan@gmail.com</td>
+                </tr>
+                <tr>
+                  <td>Highest Education Level: </td>
+                  <td>Bachelor’s Degree</td>
+                </tr>
+              </table>
+              <ActionButton
+                actionText={'Edit'}
+                handleSendRequest={handleSendRequest}
+              />
+              <ActionButton
+                actionText={'Confirm'}
+                handleSendRequest={handleSendRequest}
+              />
+            </div>
           );
         } else if (element.stringValue === 'emp_details') {
-          actionItem = 'Emp details';
+          actionItem = (
+            <div>
+              <table className={classes.BotMessage}>
+                <tr>
+                  <td>Occupation: </td>
+                  <td>Finance Manager</td>
+                </tr>
+                <tr>
+                  <td>Employment Type: </td>
+                  <td>Full Time</td>
+                </tr>
+                <tr>
+                  <td>Name of Employer: </td>
+                  <td>ABC Pte. Ltd</td>
+                </tr>
+                <tr>
+                  <td>Company UEN: </td>
+                  <td>00000000EN</td>
+                </tr>
+                <tr>
+                  <td>Employment Sector: </td>
+                  <td>Financial Intermediaries</td>
+                </tr>
+              </table>
+              <ActionButton
+                actionText={'Edit'}
+                handleSendRequest={handleSendRequest}
+              />
+              <ActionButton
+                actionText={'Confirm'}
+                handleSendRequest={handleSendRequest}
+              />
+            </div>
+          );
         } else if (element.stringValue === 'case_details') {
           actionItem = 'Case details';
         }
@@ -80,6 +192,7 @@ const Message = ({ message, index, handleSendRequest }) => {
               (buttonInfo) => {
                 return (
                   <ActionButton
+                    onClick={onOpenModal}
                     actionText={buttonInfo.stringValue}
                     handleSendRequest={handleSendRequest}
                   />
@@ -98,7 +211,61 @@ const Message = ({ message, index, handleSendRequest }) => {
     <div className={classes.MessageCard} key={`key-${index}`}>
       <Modal open={open} onClose={onCloseModal} center>
         <p>You have successfully login with SingPass.</p>
-        <p>jklsdahflkjhsjkfhljkshadljk</p>
+        <p>Please confirm your personal details</p>
+        <table>
+          <tr>
+            <td>Name (as per NRIC/FIN): </td>
+            <td>TAN YUE LIANG ALEXANDER</td>
+          </tr>
+          <tr>
+            <td>NRIC or FIN: </td>
+            <td>S0000121F</td>
+          </tr>
+          <tr>
+            <td>Nationality: </td>
+            <td>Singaporean</td>
+          </tr>
+          <tr>
+            <td>Date of Birth: </td>
+            <td>12/12/1977</td>
+          </tr>
+          <tr>
+            <td>Country of Birth: </td>
+            <td>Singapore</td>
+          </tr>
+          <tr>
+            <td>Pass Status: </td>
+            <td>Active</td>
+          </tr>
+          <tr>
+            <td>Pass Expiry: </td>
+            <td>10/10/2025</td>
+          </tr>
+          <tr>
+            <td>Mailing Address: </td>
+            <td>Tampines St 92, BLK 844 #10-123 S243929</td>
+          </tr>
+          <tr>
+            <td>Billing Address: </td>
+            <td>Tampines St 92, BLK 844 #10-123 S243929</td>
+          </tr>
+          <tr>
+            <td>Mobile Number: </td>
+            <td>9642 2314</td>
+          </tr>
+          <tr>
+            <td>Home Number: </td>
+            <td>6782 1312</td>
+          </tr>
+          <tr>
+            <td>Email Address: </td>
+            <td>alexandertan@gmail.com</td>
+          </tr>
+          <tr>
+            <td>Highest Education Level: </td>
+            <td>Bachelor’s Degree</td>
+          </tr>
+        </table>
         <ActionButton
           actionText={'Confirm'}
           handleSendRequest={handleSendRequest}
