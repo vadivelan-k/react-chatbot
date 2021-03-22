@@ -17,3 +17,12 @@ span {
   position: sticky;
   top: 0;
 }
+
+label {
+  color: #212529 !important;
+}
+
+.user-info-container {
+  padding-left: 20px;
+  padding-right: 10px;
+}

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
-import MOMBotIcon from './assets/images/MOMBot-Icon-1.svg';
 import classes from './Chat.module.css';
+import queryString from 'query-string';
 import Messages from './Messages';
 
 const Chat = (props) => {
@@ -11,13 +10,14 @@ const Chat = (props) => {
   const [sessionId, setSessionId] = useState('');
   const { REACT_APP_API_URL } = process.env;
 
-  const handleMessageSubmit = (message) => {
+  const handleMessageSubmit = ({ message, additionalParams = {} }) => {
     const queryParams = sessionId
       ? `message=${message}&sessionID=${sessionId}`
       : `message=${message}`;
+    const additionalParamString = queryString.stringify(additionalParams);
 
     axios
-      .get(`${REACT_APP_API_URL}?${queryParams}`)
+      .get(`${REACT_APP_API_URL}?${queryParams}&${additionalParamString}`)
       .then((response) => {
         if (!sessionId) {
           setSessionId(response.data.sessionID);
@@ -49,7 +49,7 @@ const Chat = (props) => {
         isBot: false,
       };
       setResponses((responses) => [...responses, message]);
-      handleMessageSubmit(message.text);
+      handleMessageSubmit({ message: message.text });
       setCurrentMessage('');
     }
   };
@@ -68,7 +68,7 @@ const Chat = (props) => {
     }
 
     setResponses((responses) => newResponseCollection);
-    handleMessageSubmit(message.text);
+    handleMessageSubmit({ message: message.text });
     setCurrentMessage('');
   };
 

@@ -9,6 +9,7 @@ import moment from 'moment';
 
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
+import UserInfo from "./UserInfo";
 
 const Message = ({ message, index, handleSendRequest }) => {
   const [open, setOpen] = useState(false);
@@ -77,73 +78,7 @@ const Message = ({ message, index, handleSendRequest }) => {
               <p className={classes.BotMessage}>
                 Please confirm your personal details
               </p>
-              <table className={classes.BotMessage}>
-                <tbody>
-                  <tr>
-                    <td>
-                      Name <br />
-                      (as per NRIC/FIN):{' '}
-                    </td>
-                    <td>TAN YUE LIANG ALEXANDER</td>
-                  </tr>
-                  <tr>
-                    <td>NRIC or FIN: </td>
-                    <td>S0000121F</td>
-                  </tr>
-                  <tr>
-                    <td>Nationality: </td>
-                    <td>Singaporean</td>
-                  </tr>
-                  <tr>
-                    <td>Date of Birth: </td>
-                    <td>12/12/1977</td>
-                  </tr>
-                  <tr>
-                    <td>Country of Birth: </td>
-                    <td>Singapore</td>
-                  </tr>
-                  <tr>
-                    <td>Pass Status: </td>
-                    <td>Active</td>
-                  </tr>
-                  <tr>
-                    <td>Pass Expiry: </td>
-                    <td>10/10/2025</td>
-                  </tr>
-                  <tr>
-                    <td>Mailing Address: </td>
-                    <td>Tampines St 92, BLK 844 #10-123 S243929</td>
-                  </tr>
-                  <tr>
-                    <td>Billing Address: </td>
-                    <td>Tampines St 92, BLK 844 #10-123 S243929</td>
-                  </tr>
-                  <tr>
-                    <td>Mobile Number: </td>
-                    <td>9642 2314</td>
-                  </tr>
-                  <tr>
-                    <td>Home Number: </td>
-                    <td>6782 1312</td>
-                  </tr>
-                  <tr>
-                    <td>Email Address: </td>
-                    <td>alexandertan@gmail.com</td>
-                  </tr>
-                  <tr>
-                    <td>Highest Education Level: </td>
-                    <td>Bachelor’s Degree</td>
-                  </tr>
-                </tbody>
-              </table>
-              <ActionButton
-                actionText={'Edit'}
-                handleSendRequest={handleSendRequest}
-              />
-              <ActionButton
-                actionText={'Confirm'}
-                handleSendRequest={handleSendRequest}
-              />
+              <UserInfo handleSendRequest={handleSendRequest} />
             </div>
           );
         } else if (element.stringValue === 'emp_details') {
