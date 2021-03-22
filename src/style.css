@@ -30,3 +30,11 @@ label {
 .react-datepicker-wrapper {
   display: block !important;
 }
+
+tr.borderless {
+  border: none !important;
+}
+
+.form-group {
+  margin-bottom: 0.5rem !important;
+}
