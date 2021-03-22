@@ -12,7 +12,6 @@ const CalendarConfirmButton = ({ actionText, handleSendRequest }) => {
       onClick={() => {
         setDisabled(true);
         handleSendRequest({ actionText: actionText });
-        console.log(actionText);
       }}
     >
       Confirm

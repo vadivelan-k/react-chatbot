@@ -54,7 +54,7 @@ const Chat = (props) => {
     }
   };
 
-  const handleSendRequest = ({ actionText, initiateChat = false }) => {
+  const handleSendRequest = ({ actionText, initiateChat = false, additionalParams = {} }) => {
     const message = {
       text: actionText,
       isBot: false,
@@ -68,7 +68,7 @@ const Chat = (props) => {
     }
 
     setResponses((responses) => newResponseCollection);
-    handleMessageSubmit({ message: message.text });
+    handleMessageSubmit({ message: message.text, additionalParams: additionalParams });
     setCurrentMessage('');
   };
 

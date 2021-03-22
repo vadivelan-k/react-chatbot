@@ -29,10 +29,8 @@ const UserInfo = ({ handleSendRequest }) => {
     setUser(Object.assign(user, { [event.target.name]: event.target.value }))
   };
 
-  console.log(user);
-
   return (
-    <div className="user-info-container">
+    <div className="form-container">
       <Form>
         <Form.Group as={Row} controlId="formBasicPassword">
           <Form.Label column sm="4">Name (as per NRIC/FIN)</Form.Label>

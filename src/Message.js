@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
 import classes from './Message.module.css';
 import ActionButton from './ActionButton';
-
 import DatePicker from 'react-datepicker';
 import CalendarConfirmButton from './CalendarConfirmButton';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
-
 import 'react-responsive-modal/styles.css';
-import { Modal } from 'react-responsive-modal';
 import UserInfo from "./UserInfo";
+import CaseDetailComponent from "./CaseDetailComponent";
 
 const Message = ({ message, index, handleSendRequest }) => {
-  const [open, setOpen] = useState(false);
-
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
 
@@ -21,15 +17,11 @@ const Message = ({ message, index, handleSendRequest }) => {
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
-    console.log('Date: ', startDate, endDate);
   };
 
-  var startDateFormat = moment(startDate).format('MMM Do YYYY');
-  var endDateFormat = moment(endDate).format('MMM Do YYYY');
+  const startDateFormat = moment(startDate).format('MMM Do YYYY');
+  const endDateFormat = moment(endDate).format('MMM Do YYYY');
   const confirmDate = startDateFormat + ' to ' + endDateFormat;
-
-  const onOpenModal = () => setOpen(true);
-  const onCloseModal = () => setOpen(false);
 
   const displayMessage = ({ response }) => {
     const textMessages = response.filter(
@@ -119,42 +111,7 @@ const Message = ({ message, index, handleSendRequest }) => {
             </div>
           );
         } else if (element.stringValue === 'case_details') {
-          actionItem = (
-            <div>
-              <table className={classes.BotMessage}>
-                <tbody>
-                  <tr>
-                    <td>Basic Salary (Monthly): </td>
-                    <td>$2000</td>
-                  </tr>
-                  <tr>
-                    <td>No. of Working Days (Weekly): </td>
-                    <td>5 Days</td>
-                  </tr>
-                  <tr>
-                    <td>Claim Period: </td>
-                    <td>10/11/2020 - 10/12/2020</td>
-                  </tr>
-                  <tr>
-                    <td>No. of Actual Working Days: </td>
-                    <td>20 Days</td>
-                  </tr>
-                  <tr>
-                    <td>Total Pay Received </td>
-                    <td>$1000</td>
-                  </tr>
-                </tbody>
-              </table>
-              <ActionButton
-                actionText={'Edit'}
-                handleSendRequest={handleSendRequest}
-              />
-              <ActionButton
-                actionText={'Submit'}
-                handleSendRequest={handleSendRequest}
-              />
-            </div>
-          );
+          actionItem = <CaseDetailComponent handleSendRequest={handleSendRequest} />;
         } else if (element.stringValue === 'doc_upload') {
           actionItem = (
             <div>
@@ -347,7 +304,6 @@ const Message = ({ message, index, handleSendRequest }) => {
                 return (
                   <ActionButton
                     key={index}
-                    onClick={onOpenModal}
                     actionText={buttonInfo.stringValue}
                     handleSendRequest={handleSendRequest}
                   />
@@ -364,81 +320,6 @@ const Message = ({ message, index, handleSendRequest }) => {
 
   return (
     <div key={`key-${index}`}>
-      <Modal open={open} onClose={onCloseModal} center>
-        <p className={classes.BotMessage}>
-          You have successfully login with SingPass.
-        </p>
-        <p className={classes.BotMessage}>
-          Please confirm your personal details
-        </p>
-        <table className={classes.BotMessage}>
-          <tbody>
-            <tr>
-              <td>
-                Name <br />
-                (as per NRIC/FIN):{' '}
-              </td>
-              <td>TAN YUE LIANG ALEXANDER</td>
-            </tr>
-            <tr>
-              <td>NRIC or FIN: </td>
-              <td>S0000121F</td>
-            </tr>
-            <tr>
-              <td>Nationality: </td>
-              <td>Singaporean</td>
-            </tr>
-            <tr>
-              <td>Date of Birth: </td>
-              <td>12/12/1977</td>
-            </tr>
-            <tr>
-              <td>Country of Birth: </td>
-              <td>Singapore</td>
-            </tr>
-            <tr>
-              <td>Pass Status: </td>
-              <td>Active</td>
-            </tr>
-            <tr>
-              <td>Pass Expiry: </td>
-              <td>10/10/2025</td>
-            </tr>
-            <tr>
-              <td>Mailing Address: </td>
-              <td>Tampines St 92, BLK 844 #10-123 S243929</td>
-            </tr>
-            <tr>
-              <td>Billing Address: </td>
-              <td>Tampines St 92, BLK 844 #10-123 S243929</td>
-            </tr>
-            <tr>
-              <td>Mobile Number: </td>
-              <td>9642 2314</td>
-            </tr>
-            <tr>
-              <td>Home Number: </td>
-              <td>6782 1312</td>
-            </tr>
-            <tr>
-              <td>Email Address: </td>
-              <td>alexandertan@gmail.com</td>
-            </tr>
-            <tr>
-              <td>Highest Education Level: </td>
-              <td>Bachelor’s Degree</td>
-            </tr>
-          </tbody>
-        </table>
-        <ActionButton
-          actionText={'Edit'}
-          handleSendRequest={handleSendRequest}
-        />
-        <ActionButton
-          actionText={'Confirm'}
-          handleSendRequest={handleSendRequest}
-        />
-      </Modal>
       {message.isBot ? (
         <div className={classes.BotContainer}>
           <svg className="Message_BotIcon__1oSZb" width="60" height="60" viewBox="0 0 70 50" fill="none"

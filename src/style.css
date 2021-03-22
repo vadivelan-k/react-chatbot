@@ -22,7 +22,11 @@ label {
   color: #212529 !important;
 }
 
-.user-info-container {
+.form-container {
   padding-left: 20px;
   padding-right: 10px;
+}
+
+.react-datepicker-wrapper {
+  display: block !important;
 }
