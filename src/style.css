@@ -38,3 +38,12 @@ tr.borderless {
 .form-group {
   margin-bottom: 0.3rem !important;
 }
+
+.rating-container {
+  margin-left: 17px;
+  height: 50px;
+}
+
+div.rating-container span span span:nth-child(2) span {
+  background-color: #005787 !important;
+}

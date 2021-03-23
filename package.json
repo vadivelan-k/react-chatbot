@@ -23,6 +23,7 @@
     "dotenv": "^8.2.0",
     "react-bootstrap": "^1.5.2",
     "react-datepicker": "^3.6.0",
+    "react-rating": "^2.0.5",
     "react-scripts": "latest"
   },
   "browserslist": {

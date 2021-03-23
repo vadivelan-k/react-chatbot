@@ -9,6 +9,7 @@ import 'react-responsive-modal/styles.css';
 import UserInfo from "./UserInfo";
 import CaseDetailComponent from "./CaseDetailComponent";
 import ReviewClaimComponent from "./ReviewClaimComponent";
+import RatingComponent from "./RatingComponent";
 
 const Message = ({ message, index, handleSendRequest }) => {
   const [startDate, setStartDate] = useState(new Date());
@@ -133,6 +134,8 @@ const Message = ({ message, index, handleSendRequest }) => {
             handleSendRequest={handleSendRequest}
             message={payloadMessage}
           />
+        } else if (element.stringValue === 'rate_experience') {
+          actionItem = <RatingComponent handleSendRequest={handleSendRequest} />
         }
 
         return actionItem;
