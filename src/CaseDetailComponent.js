@@ -4,6 +4,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
 import ActionButton from './ActionButton';
+import classes from './CaseDetailComponent.module.css';
 
 const CaseDetailComponent = ({
   handleSendRequest,
@@ -20,12 +21,12 @@ const CaseDetailComponent = ({
 
   const defaultCaseDetail = {
     bsal: '2000',
-    wdays: '20',
-    awdays: '5',
-    rpay: '1000',
+    wdays: '22',
+    awdays: '27',
+    rpay: '0',
     claimable: '2000',
     cpstart: formatDate(empStartDate),
-    incompay: '0',
+    incompay: '2454.55',
     cpend: formatDate(empEndDate),
     event: 'update',
     numberOfDaysPerWeek: '5',
@@ -43,7 +44,7 @@ const CaseDetailComponent = ({
     const { bsal, wdays, awdays } = caseDetail;
     const actualPay = (bsal / wdays) * awdays;
 
-    return actualPay;
+    return actualPay.toFixed(2);
   };
 
   return (
@@ -199,7 +200,7 @@ const CaseDetailComponent = ({
       {!editable && (
         <>
           <Button
-            variant='primary'
+            className={classes.Button}
             type='button'
             onClick={() => {
               setEditable(true);

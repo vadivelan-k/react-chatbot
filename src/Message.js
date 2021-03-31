@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Form, Button, Row, Col, Alert, Table } from 'react-bootstrap';
 import classes from './Message.module.css';
 import ActionButton from './ActionButton';
 import DatePicker from 'react-datepicker';
@@ -7,18 +8,31 @@ import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
 import 'react-responsive-modal/styles.css';
 import UserInfo from './UserInfo';
+import EmpInfo from './EmpInfo';
 import CaseDetailComponent from './CaseDetailComponent';
 import ReviewClaimComponent from './ReviewClaimComponent';
 import RatingComponent from './RatingComponent';
 
 const Message = ({ message, index, handleSendRequest }) => {
-  const [startDate, setStartDate] = useState(new Date());
+  let currentDate = new Date();
+  const [startDate, setStartDate] = useState(currentDate);
   const [endDate, setEndDate] = useState(null);
+
+  // const onChange_Start = (date) => {
+  //   const start = date;
+  //   setStartDate(start);
+  // };
+
+  // const onChange_End = (date) => {
+  //   const end = date;
+  //   setEndDate(end);
+  // };
 
   const onChange = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
+    console.log('Date: ', startDate, endDate);
   };
 
   const startDateFormat = moment(startDate).format('MMM DD, YYYY');
@@ -29,6 +43,8 @@ const Message = ({ message, index, handleSendRequest }) => {
     const textMessages = response.filter(
       (messageInfo) => messageInfo.message === 'text'
     );
+
+    console.log(textMessages);
     return textMessages.map((textMessage, index) => (
       <p className={classes.BotMessage} key={index}>
         {textMessage.text.text[0]}
@@ -48,6 +64,38 @@ const Message = ({ message, index, handleSendRequest }) => {
         if (element.stringValue === 'start_end_dt_picker') {
           actionItem = (
             <div className={classes.Calendar}>
+              {/* <Form>
+                <Form.Group as={Row} controlId='cpend'>
+                  <Form.Label column sm='4'>
+                    Start Date:
+                  </Form.Label>
+                  <Col sm='5'>
+                    <DatePicker
+                      selected={startDate}
+                      onChange={onChange_Start}
+                      startDate={startDate}
+                      selectsStart
+                    />
+                  </Col>
+                </Form.Group>
+                <Form.Group as={Row} controlId='cpend'>
+                  <Form.Label column sm='4'>
+                    End Date:
+                  </Form.Label>
+                  <Col sm='5'>
+                    <DatePicker
+                      minDate={startDate}
+                      selected={endDate}
+                      onChange={onChange_End}
+                      endDate={endDate}
+                      selectsEnd
+                    />
+                  </Col>
+                </Form.Group>
+              </Form>
+              <br />
+              <br />
+              <br /> */}
               <DatePicker
                 className='calendar'
                 selected={startDate}
@@ -90,47 +138,16 @@ const Message = ({ message, index, handleSendRequest }) => {
         //   );
         // }
         else if (element.stringValue === 'emp_details') {
-          actionItem = (
-            <div>
-              <table className={classes.BotMessage}>
-                <tbody>
-                  <tr>
-                    <td>Occupation: </td>
-                    <td>Finance Manager</td>
-                  </tr>
-                  <tr>
-                    <td>Employment Type: </td>
-                    <td>Full Time</td>
-                  </tr>
-                  <tr>
-                    <td>Name of Employer: </td>
-                    <td>ABC Pte. Ltd</td>
-                  </tr>
-                  <tr>
-                    <td>Company UEN: </td>
-                    <td>00000000EN</td>
-                  </tr>
-                  <tr>
-                    <td>Employment Sector: </td>
-                    <td>Financial Intermediaries</td>
-                  </tr>
-                </tbody>
-              </table>
-              <ActionButton
-                actionText={'Confirm'}
-                handleSendRequest={handleSendRequest}
-              />
-            </div>
-          );
+          actionItem = <EmpInfo handleSendRequest={handleSendRequest} />;
         } else if (element.stringValue === 'case_details') {
           actionItem = (
             <CaseDetailComponent
               handleSendRequest={handleSendRequest}
               empStartDate={
-                'Mon Feb 01 2021 00:00:00 GMT+0800 (Singapore Standard Time)'
+                'Mon Jun 01 2020 00:00:00 GMT+0800 (Singapore Standard Time)'
               }
               empEndDate={
-                'Sun Feb 28 2021 00:00:00 GMT+0800 (Singapore Standard Time)'
+                'Tue Jun 30 2020 00:00:00 GMT+0800 (Singapore Standard Time)'
               }
             />
           );
@@ -147,6 +164,9 @@ const Message = ({ message, index, handleSendRequest }) => {
                   </tr>
                 </tbody>
               </table>
+              <Button className={classes.Button} type='button'>
+                Upload
+              </Button>
               <ActionButton
                 actionText={'Submit'}
                 handleSendRequest={handleSendRequest}

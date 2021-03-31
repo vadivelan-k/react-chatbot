@@ -10,7 +10,7 @@ const RatingComponent = ({ handleSendRequest }) => {
 
   return (
     <div className='rating-container'>
-      <Rating onChange={handleRating}/>
+      <Rating onChange={handleRating} />
     </div>
   );
 };

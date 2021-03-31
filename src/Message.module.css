@@ -84,6 +84,14 @@ h6 {
   font-weight: lighter;
 }
 
+.Button {
+  color: #ffffff;
+  background-color: #005787;
+  margin: 10px;
+  margin-left: 30px;
+  border-radius: 10px 10px 10px 10px;
+}
+
 @media only screen and (min-width: 992px) {
   .UserCard {
     /*width: 60%;*/

@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ActionButton from './ActionButton';
+import classes from './UserInfo.module.css';
 
 const UserInfo = ({ handleSendRequest }) => {
   const defaultUser = {
@@ -26,7 +27,7 @@ const UserInfo = ({ handleSendRequest }) => {
   const [editable, setEditable] = useState(false);
 
   const onChange = (event) => {
-    setUser(Object.assign(user, { [event.target.name]: event.target.value }));
+    setUser({ ...user, [event.target.name]: event.target.value });
   };
 
   return (
@@ -181,6 +182,7 @@ const UserInfo = ({ handleSendRequest }) => {
             type='button'
             onClick={() => {
               setEditable(false);
+              setUser({ ...user });
             }}
           >
             Save
@@ -190,7 +192,7 @@ const UserInfo = ({ handleSendRequest }) => {
         {!editable && (
           <>
             <Button
-              variant='primary'
+              className={classes.Button}
               type='button'
               onClick={() => {
                 setEditable(true);
