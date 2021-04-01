@@ -29,6 +29,13 @@
   font-weight: 700;
 }
 
+.BotMessageLink {
+  /* margin-left: 20px; */
+  padding: 20px;
+  font-family: 'Montserrat';
+  font-weight: 700;
+}
+
 .Calendar {
   text-align: center;
   padding-bottom: 10px;

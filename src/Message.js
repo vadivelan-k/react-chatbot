@@ -13,7 +13,12 @@ import CaseDetailComponent from './CaseDetailComponent';
 import ReviewClaimComponent from './ReviewClaimComponent';
 import RatingComponent from './RatingComponent';
 
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
+
 const Message = ({ message, index, handleSendRequest }) => {
+  const [open, setOpen] = useState(false);
+  const [login, setLogin] = useState(false);
   let currentDate = new Date();
   const [startDate, setStartDate] = useState(currentDate);
   const [endDate, setEndDate] = useState(null);
@@ -39,17 +44,70 @@ const Message = ({ message, index, handleSendRequest }) => {
   const endDateFormat = moment(endDate).format('MMM DD, YYYY');
   const confirmDate = startDateFormat + ' to ' + endDateFormat;
 
+  console.log('message: ', message);
+
+  const onOpenModal = () => {
+    setOpen(true);
+  };
+  const onCloseModal = () => {
+    setOpen(false);
+    setLogin(true);
+  };
+
   const displayMessage = ({ response }) => {
     const textMessages = response.filter(
       (messageInfo) => messageInfo.message === 'text'
     );
 
     console.log(textMessages);
-    return textMessages.map((textMessage, index) => (
-      <p className={classes.BotMessage} key={index}>
-        {textMessage.text.text[0]}
-      </p>
-    ));
+
+    return textMessages.map((textMessage, index) => {
+      if (index === 0) {
+        return (
+          <p className={classes.BotMessage} key={0}>
+            {textMessage.text.text[0]}
+          </p>
+        );
+      } else if (index === 1) {
+        return (
+          <p className={classes.BotMessage} key={1}>
+            {textMessage.text.text[0]}
+          </p>
+        );
+      } else if (index === 2) {
+        return (
+          <a
+            className={classes.BotMessageLink}
+            href={textMessage.text.text[0]}
+            target='_blank'
+          >
+            {textMessage.text.text[0]}
+          </a>
+        );
+      }
+    });
+    // <>
+    //   {response[1] ? (
+    //     <p className={classes.BotMessage} key={index}>
+    //       {response[0].text.text[0]}
+    //     </p>
+    //   ) : (
+    //     <>
+    //       <p className={classes.BotMessage} key={index}>
+    //         {response[0].text.text[0]}
+    //       </p>
+    //       <p className={classes.BotMessage} key={index}>
+    //         {response[1].text.text[0]}
+    //       </p>
+    //     </>
+    //   )}
+    // </>;
+
+    // return textMessages.map((textMessage, index) => (
+    //   <p className={classes.BotMessage} key={index}>
+    //     {textMessage.text.text[0]}
+    //   </p>
+    // ));
   };
 
   const displayActionItems = ({ response }) => {
@@ -58,10 +116,10 @@ const Message = ({ message, index, handleSendRequest }) => {
     );
     if (payloadMessage) {
       if (payloadMessage.payload.fields.element) {
-        const element = payloadMessage.payload.fields.element;
+        const element = payloadMessage.payload.fields;
         let actionItem = '';
 
-        if (element.stringValue === 'start_end_dt_picker') {
+        if (element.element.stringValue === 'start_end_dt_picker') {
           actionItem = (
             <div className={classes.Calendar}>
               {/* <Form>
@@ -111,16 +169,24 @@ const Message = ({ message, index, handleSendRequest }) => {
               />
             </div>
           );
-        } else if (element.stringValue === 'login') {
+        } else if (element.element.stringValue === 'login') {
           actionItem = (
             <div>
-              <p className={classes.BotMessage}>
-                You have successfully login with SingPass
-              </p>
-              <p className={classes.BotMessage}>
-                Please confirm your personal details
-              </p>
-              <UserInfo handleSendRequest={handleSendRequest} />
+              {!open && !login ? (
+                <button className={classes.Button} onClick={onOpenModal}>
+                  Login via SingPass
+                </button>
+              ) : (
+                <div>
+                  <p className={classes.BotMessage}>
+                    You have successfully login with SingPass
+                  </p>
+                  <p className={classes.BotMessage}>
+                    Please confirm your personal details
+                  </p>
+                  <UserInfo handleSendRequest={handleSendRequest} />
+                </div>
+              )}
             </div>
           );
         }
@@ -137,9 +203,9 @@ const Message = ({ message, index, handleSendRequest }) => {
         //     </div>
         //   );
         // }
-        else if (element.stringValue === 'emp_details') {
+        else if (element.element.stringValue === 'emp_details') {
           actionItem = <EmpInfo handleSendRequest={handleSendRequest} />;
-        } else if (element.stringValue === 'case_details') {
+        } else if (element.element.stringValue === 'case_details') {
           actionItem = (
             <CaseDetailComponent
               handleSendRequest={handleSendRequest}
@@ -151,7 +217,7 @@ const Message = ({ message, index, handleSendRequest }) => {
               }
             />
           );
-        } else if (element.stringValue === 'doc_upload') {
+        } else if (element.element.stringValue === 'doc_upload') {
           actionItem = (
             <div>
               <table className={classes.BotMessage}>
@@ -173,18 +239,24 @@ const Message = ({ message, index, handleSendRequest }) => {
               />
             </div>
           );
-        } else if (element.stringValue === 'review_claim') {
+        } else if (element.element.stringValue === 'review_claim') {
           actionItem = (
             <ReviewClaimComponent
               handleSendRequest={handleSendRequest}
               message={payloadMessage}
             />
           );
-        } else if (element.stringValue === 'rate_experience') {
+        } else if (element.element.stringValue === 'rate_experience') {
           actionItem = (
             <RatingComponent handleSendRequest={handleSendRequest} />
           );
         }
+        // else if (
+        //   element.feedbackText.stringValue ===
+        //   'Thank you for your feedback and have a nice day.'
+        // ) {
+        //   actionItem = <p>Thank you for your feedback and have a nice day.</p>;
+        // }
 
         return actionItem;
       }
@@ -213,6 +285,22 @@ const Message = ({ message, index, handleSendRequest }) => {
 
   return (
     <div key={`key-${index}`}>
+      <Modal open={open} onClose={onCloseModal} center>
+        <h5>Log in</h5>
+        <Form.Group as={Row} controlId='singpassID'>
+          <Col sm='8'>
+            <Form.Control value='S0000121F' name='singpassID' type='text' />
+          </Col>
+        </Form.Group>
+        <Form.Group as={Row} controlId='password'>
+          <Col sm='8'>
+            <Form.Control value='12345678' name='singpassID' type='password' />
+          </Col>
+        </Form.Group>
+        <button className={classes.Button} onClick={onCloseModal}>
+          Log in
+        </button>
+      </Modal>
       {message.isBot ? (
         <div className={classes.BotContainer}>
           <svg
@@ -253,8 +341,14 @@ const Message = ({ message, index, handleSendRequest }) => {
             {displayMessage(message)}
             {displayActionItems(message)}
           </div>
+          {/* {!message.isSystem ? (<div className={classes.BotCard}>
+            {displayMessage(message)}
+            {displayActionItems(message)}
+          </div>) : <div>You have successfully login</div>} */}
         </div>
       ) : (
+        // message.isBot && message.isSystem ? (<div>You have successfully login</div>)
+        // : !message.isBot && !message.isSystem ?
         <div className={classes.UserCard}>
           <p className={classes.UserMessage}>{message.text}</p>
         </div>
