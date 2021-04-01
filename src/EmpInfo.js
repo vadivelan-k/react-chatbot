@@ -97,7 +97,7 @@ const EmpInfo = ({ handleSendRequest }) => {
         </Form.Group>
         {editable && (
           <Button
-            variant='primary'
+            className={classes.Button}
             type='button'
             onClick={() => {
               setEditable(false);

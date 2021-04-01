@@ -186,7 +186,7 @@ const CaseDetailComponent = ({
 
       {editable && (
         <Button
-          variant='primary'
+          className={classes.Button}
           type='button'
           onClick={() => {
             setEditable(false);

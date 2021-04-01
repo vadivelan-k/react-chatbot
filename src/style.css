@@ -1,9 +1,3 @@
-h1,
-p,
-span {
-  font-family: 'Open Sans', sans-serif;
-}
-
 .btn {
   margin: 5px;
 }
@@ -19,7 +13,7 @@ span {
 }
 
 label {
-  color: #212529 !important;
+  color: #000000 !important;
 }
 
 .form-container {
@@ -42,6 +36,13 @@ tr.borderless {
 .rating-container {
   margin-left: 17px;
   height: 50px;
+  padding-bottom: 20%;
+}
+
+.feedback {
+  padding-top: 5%;
+  margin-left: 3px;
+  font-family: 'Montserrat';
 }
 
 div.rating-container span span span:nth-child(2) span {

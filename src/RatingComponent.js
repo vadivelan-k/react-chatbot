@@ -16,8 +16,11 @@ const RatingComponent = ({ handleSendRequest }) => {
         }}
       />
 
-      <div>
-        <p hidden={hidden}>Thank you for your feedback and have a nice day.</p>
+      <br />
+      <div className='feedback'>
+        <span hidden={hidden}>
+          Thank you for your feedback and have a nice day.
+        </span>
       </div>
     </div>
   );

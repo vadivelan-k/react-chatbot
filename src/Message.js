@@ -18,7 +18,7 @@ import { Modal } from 'react-responsive-modal';
 
 const Message = ({ message, index, handleSendRequest }) => {
   const [open, setOpen] = useState(false);
-  const [login, setLogin] = useState(false);
+  const [hidden, setHidden] = useState(true);
   let currentDate = new Date();
   const [startDate, setStartDate] = useState(currentDate);
   const [endDate, setEndDate] = useState(null);
@@ -51,7 +51,7 @@ const Message = ({ message, index, handleSendRequest }) => {
   };
   const onCloseModal = () => {
     setOpen(false);
-    setLogin(true);
+    setHidden(false);
   };
 
   const displayMessage = ({ response }) => {
@@ -76,13 +76,11 @@ const Message = ({ message, index, handleSendRequest }) => {
         );
       } else if (index === 2) {
         return (
-          <a
-            className={classes.BotMessageLink}
-            href={textMessage.text.text[0]}
-            target='_blank'
-          >
-            {textMessage.text.text[0]}
-          </a>
+          <div className={classes.BotMessageLink}>
+            <a href={textMessage.text.text[0]} target='_blank'>
+              {textMessage.text.text[0]}
+            </a>
+          </div>
         );
       }
     });
@@ -172,21 +170,20 @@ const Message = ({ message, index, handleSendRequest }) => {
         } else if (element.element.stringValue === 'login') {
           actionItem = (
             <div>
-              {!open && !login ? (
-                <button className={classes.Button} onClick={onOpenModal}>
-                  Login via SingPass
+              {!open && hidden ? (
+                <button className={classes.StaticButton} onClick={onOpenModal}>
+                  Log in
                 </button>
-              ) : (
-                <div>
-                  <p className={classes.BotMessage}>
-                    You have successfully login with SingPass
-                  </p>
-                  <p className={classes.BotMessage}>
-                    Please confirm your personal details
-                  </p>
-                  <UserInfo handleSendRequest={handleSendRequest} />
-                </div>
-              )}
+              ) : null}
+              <div hidden={hidden}>
+                <p className={classes.BotSystemMessage}>
+                  <strong>You have successfully log in with SingPass</strong>
+                </p>
+                <p className={classes.BotMessage}>
+                  Please confirm your personal details
+                </p>
+                <UserInfo handleSendRequest={handleSendRequest} />
+              </div>
             </div>
           );
         }
@@ -248,7 +245,9 @@ const Message = ({ message, index, handleSendRequest }) => {
           );
         } else if (element.element.stringValue === 'rate_experience') {
           actionItem = (
-            <RatingComponent handleSendRequest={handleSendRequest} />
+            <div>
+              <RatingComponent handleSendRequest={handleSendRequest} />
+            </div>
           );
         }
         // else if (
@@ -297,7 +296,7 @@ const Message = ({ message, index, handleSendRequest }) => {
             <Form.Control value='12345678' name='singpassID' type='password' />
           </Col>
         </Form.Group>
-        <button className={classes.Button} onClick={onCloseModal}>
+        <button className={classes.StaticButton} onClick={onCloseModal}>
           Log in
         </button>
       </Modal>
