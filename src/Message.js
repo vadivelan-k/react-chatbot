@@ -47,10 +47,11 @@ const Message = ({ message, index, handleSendRequest }) => {
   console.log('message: ', message);
 
   const onOpenModal = () => {
-    setOpen(true);
+    setHidden(false);
+    // setOpen(true);
   };
   const onCloseModal = () => {
-    setOpen(false);
+    // setOpen(false);
     setHidden(false);
   };
 
@@ -170,14 +171,26 @@ const Message = ({ message, index, handleSendRequest }) => {
         } else if (element.element.stringValue === 'login') {
           actionItem = (
             <div>
-              {!open && hidden ? (
+              {/* {hidden ? (
                 <button className={classes.StaticButton} onClick={onOpenModal}>
                   Log in
                 </button>
               ) : null}
               <div hidden={hidden}>
                 <p className={classes.BotSystemMessage}>
-                  <strong>You have successfully log in with SingPass</strong>
+                  You have successfully log in with SingPass
+                </p>
+                <p className={classes.BotMessage}>
+                  Please confirm your personal details
+                </p>
+                <UserInfo handleSendRequest={handleSendRequest} />
+              </div> */}
+              <button className={classes.StaticButton} onClick={onOpenModal}>
+                Log in
+              </button>
+              <div hidden={hidden}>
+                <p className={classes.BotSystemMessage}>
+                  You have successfully log in with SingPass
                 </p>
                 <p className={classes.BotMessage}>
                   Please confirm your personal details
