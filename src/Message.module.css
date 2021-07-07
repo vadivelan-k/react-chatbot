@@ -29,16 +29,34 @@
   font-weight: 700;
 }
 
+.BotSystemMessage {
+  /* margin-left: 20px; */
+  padding: 20px;
+  font-family: 'Montserrat';
+  font-weight: 900;
+}
+
+.BotMessageLink {
+  margin-left: 20px;
+  padding-bottom: 20px;
+  font-family: 'Montserrat';
+  font-weight: 700;
+}
+
 .Calendar {
   text-align: center;
   padding-bottom: 10px;
 }
 
-.LoginButton {
+.StaticButton {
   color: #ffffff;
   background-color: #005787;
   margin: 10px;
+  margin-left: 30px;
   border-radius: 10px 10px 10px 10px;
+  padding: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .UserCard {
@@ -82,6 +100,14 @@ h6 {
   font-size: 13px;
   color: gray;
   font-weight: lighter;
+}
+
+.Button {
+  color: #ffffff;
+  background-color: #005787;
+  margin: 10px;
+  margin-left: 30px;
+  border-radius: 10px 10px 10px 10px;
 }
 
 @media only screen and (min-width: 992px) {
